@@ -18,6 +18,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     
     Set<Product> findByNameAndPrice(String name, float price);
 
-    // Método personalizado para buscar productos por compañía
     Set<Product> findByCompany(String company);
 }

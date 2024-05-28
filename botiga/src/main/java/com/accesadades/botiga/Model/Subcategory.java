@@ -1,4 +1,4 @@
-package com.accesadades.botiga.Entidades;
+package com.accesadades.botiga.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Subcategoria {
+public class Subcategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +18,11 @@ public class Subcategoria {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    private Category categoria;
 
     
 
-    public Subcategoria(Long id, String nom, Categoria categoria) {
+    public Subcategory(Long id, String nom, Category categoria) {
         this.id = id;
         this.nom = nom;
         this.categoria = categoria;
@@ -44,11 +44,11 @@ public class Subcategoria {
         this.nom = nom;
     }
 
-    public Categoria getCategoria() {
+    public Category getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(Category categoria) {
         this.categoria = categoria;
     }
 
@@ -56,7 +56,4 @@ public class Subcategoria {
     public String toString() {
         return "Subcategoria [id=" + id + ", nom=" + nom + ", categoria=" + categoria + "]";
     }
-
-    
-
 }

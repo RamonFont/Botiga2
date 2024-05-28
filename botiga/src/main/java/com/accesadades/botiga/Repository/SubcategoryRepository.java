@@ -1,13 +1,12 @@
 package com.accesadades.botiga.Repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 import com.accesadades.botiga.Model.Subcategory;
 
-import java.util.Set;
-
 @Repository
-public interface SubcategoryRepository extends CrudRepository<Subcategory, Long> {
-    Set<Subcategory> findAll();
+public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> {
+    List<Subcategory> findAll();
     Subcategory findByNom(String nom);
 }
