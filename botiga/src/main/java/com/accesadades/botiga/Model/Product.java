@@ -1,42 +1,78 @@
 package com.accesadades.botiga.Model;
 
-import lombok.*;
 import jakarta.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "products")
-public class Product implements Serializable {
+public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long product_id;
-    
-    @Column
+    private Long productId;
+
     private String name;
-    
-    @Column
     private String description;
-    
-    @Column
     private String company;
-    
-    @Column
-    private float price;
-    
-    @Column
-    private long units;
-    
-    @Column(name = "creation_at")
-    private LocalDateTime creationDate;
-    
-    @Column(name = "updated_at")
-    private LocalDateTime updateDate;
+    private Double price;
+    private Integer units;
 
     @ManyToOne
-    @JoinColumn(name= "subcategory_id")
+    @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
+
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
+
+    public void setUnits(Integer units) {
+        this.units = units;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
 }

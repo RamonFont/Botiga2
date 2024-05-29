@@ -1,44 +1,43 @@
 package com.accesadades.botiga.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long categoryId;
 
-    private String nom;
+    private String name;
 
+    @OneToMany(mappedBy = "category")
+    private Set<Subcategory> subcategories;
 
-    public Category(Long id, String nom) {
-        this.id = id;
-        this.nom = nom;
+    // Getters and Setters
+
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public Long getId() {
-        return id;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public String getNom() {
-        return nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public Set<Subcategory> getSubcategories() {
+        return subcategories;
     }
 
-    @Override
-    public String toString() {
-        return "Categoria [id=" + id + ", nom=" + nom + "]";
-    }    
-
+    public void setSubcategories(Set<Subcategory> subcategories) {
+        this.subcategories = subcategories;
+    }
 }

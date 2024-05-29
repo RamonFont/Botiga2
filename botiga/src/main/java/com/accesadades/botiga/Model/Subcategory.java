@@ -1,59 +1,54 @@
 package com.accesadades.botiga.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Subcategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long subcategoryId;
 
-    private String nom;
+    private String name;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Category categoria;
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    
+    @OneToMany(mappedBy = "subcategory")
+    private Set<Product> products;
 
-    public Subcategory(Long id, String nom, Category categoria) {
-        this.id = id;
-        this.nom = nom;
-        this.categoria = categoria;
+
+    public Long getSubcategoryId() {
+        return subcategoryId;
     }
 
-    public Long getId() {
-        return id;
+    public void setSubcategoryId(Long subcategoryId) {
+        this.subcategoryId = subcategoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public String getNom() {
-        return nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public Category getCategory() {
+        return category;
     }
 
-    public Category getCategoria() {
-        return categoria;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public void setCategoria(Category categoria) {
-        this.categoria = categoria;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    @Override
-    public String toString() {
-        return "Subcategoria [id=" + id + ", nom=" + nom + ", categoria=" + categoria + "]";
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }
