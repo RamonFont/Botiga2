@@ -13,16 +13,11 @@ import com.accesadades.botiga.Repository.CategoryRepository;
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    public CategoryRepository categoryRepository;
 
     @Override
     public Set<Category> findAllCategories() {
         return new HashSet<>(categoryRepository.findAll());
-    }
-
-    @Override
-    public Category findCategoryByNom(String nom) {
-        return categoryRepository.findByNom(nom);
     }
 
     @Override
@@ -42,7 +37,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getAllCategories() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllCategories'");
+    }
+
+    @Override
+    public Category findCategoryByNom(String nom) {
+        throw new UnsupportedOperationException("Unimplemented method 'findCategoryByNom'");
     }
 }

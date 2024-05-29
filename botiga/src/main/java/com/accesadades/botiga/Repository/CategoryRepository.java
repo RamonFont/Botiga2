@@ -8,5 +8,8 @@ import com.accesadades.botiga.Model.Category;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findAll();
-    Category findByNom(String nom);
+    Category findByName(String name);
+    default Category findCategoryByName(String name) { // Cambiado 'Nom' a 'Name'
+    return findByName(name);
+    }
 }
