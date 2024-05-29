@@ -8,5 +8,5 @@ import com.accesadades.botiga.Model.Subcategory;
 @Repository
 public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> {
     List<Subcategory> findAll();
-    Subcategory findByNom(String nom);
+    Subcategory findByName(String name); // Cambiado 'nom' a 'name'
 }

@@ -21,11 +21,6 @@ public class SubcategoryServiceImpl implements SubcategoryService {
     }
 
     @Override
-    public Subcategory findSubcategoryByNom(String nom) {
-        return subcategoryRepository.findByNom(nom);
-    }
-
-    @Override
     public Subcategory findSubcategoryById(Long id) {
         return subcategoryRepository.findById(id).orElse(null);
     }
@@ -44,5 +39,11 @@ public class SubcategoryServiceImpl implements SubcategoryService {
     public List<Subcategory> getAllSubcategories() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllSubcategories'");
+    }
+
+    @Override
+    public Subcategory findSubcategoryByNom(String nom) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findSubcategoryByNom'");
     }
 }
