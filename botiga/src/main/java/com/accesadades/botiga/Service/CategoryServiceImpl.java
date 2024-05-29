@@ -1,11 +1,13 @@
 package com.accesadades.botiga.Service;
 
-import com.accesadades.botiga.Model.Category;
-import com.accesadades.botiga.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.Set;
+import java.util.HashSet;
 import java.util.List;
+
+import com.accesadades.botiga.Model.Category;
+import com.accesadades.botiga.Repository.CategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -14,22 +16,33 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+    public Set<Category> findAllCategories() {
+        return new HashSet<>(categoryRepository.findAll());
     }
 
     @Override
-    public Category getCategoryById(Long id) {
+    public Category findCategoryByNom(String nom) {
+        return categoryRepository.findByNom(nom);
+    }
+
+    @Override
+    public Category findCategoryById(Long id) {
         return categoryRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
+    public void saveCategory(Category category) {
+        categoryRepository.save(category);
     }
 
     @Override
-    public void deleteCategory(Long id) {
+    public void deleteCategoryById(Long id) {
         categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllCategories'");
     }
 }
