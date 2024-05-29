@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class WebController {
@@ -41,10 +40,10 @@ public class WebController {
         model.addAttribute("product", new Product());
         model.addAttribute("categories", categories);
         model.addAttribute("subcategories", subcategories);
-        return "creacio-producte"; 
+        return "crearProducto"; 
     }
 
-    @PostMapping("/productos/desar")
+    @PostMapping("/productes/desar")
     public String saveProduct(@RequestParam("nom") String nom,
                               @RequestParam("descripcio") String descripcio,
                               @RequestParam("unitats") int unitats,
@@ -76,8 +75,8 @@ public class WebController {
 
     @GetMapping("/catalog")
     public String mostrarCatalogo(Model model) {
-        List<Product> productes = productService.getAllProducts();
-        model.addAttribute("productes", productes);
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products); // Cambiado de "productes" a "products"
         return "catalog"; 
     }
 
@@ -90,6 +89,6 @@ public class WebController {
     public String searchProductByName(@RequestParam("name") String name, Model model) {
         Product product = productService.findProductsByName(name);
         model.addAttribute("product", product);
-        return "buscar"; // Referencia a buscar.html en el directorio templates
+        return "search"; // Referencia a search.html en el directorio templates
     }
 }
