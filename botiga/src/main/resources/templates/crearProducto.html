@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Nou Producte</title>
-    <link th:href="@{/styles/style_catalog.css}" rel="stylesheet" />
+    <title>Inserir Nou Producte</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,8 +59,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Crear Nou Producte</h1>
-        <form th:action="@{/productos/desar}" method="post">
+        <h1>Inserir Nou Producte</h1>
+        <form th:action="@{/productes/desar}" method="post">
             <div>
                 <label for="nom">Nom del Producte:</label>
                 <input type="text" id="nom" name="nom" required>
@@ -99,7 +98,7 @@
             </div>
         </form>
         <div class="link">
-            <a th:href="@{/index}">Torna a l'índex</a>
+            <a th:href="@{/index}">Tornar a l'índex</a>
         </div>
     </div>
 </body>

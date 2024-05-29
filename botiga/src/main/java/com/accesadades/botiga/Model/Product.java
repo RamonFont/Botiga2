@@ -7,25 +7,24 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long product_id;
 
     private String name;
     private String description;
     private String company;
-    private Double price;
-    private Integer units;
+    private float price;
+    private int units;
 
     @ManyToOne
-    @JoinColumn(name = "subcategory_id")
+    @JoinColumn(name = "subcategory_id", nullable = false)
     private Subcategory subcategory;
 
-
-    public Long getProductId() {
-        return productId;
+    public Long getProduct_id() {
+        return product_id;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct_id(Long product_id) {
+        this.product_id = product_id;
     }
 
     public String getName() {
@@ -52,19 +51,19 @@ public class Product {
         this.company = company;
     }
 
-    public Double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public Integer getUnits() {
+    public int getUnits() {
         return units;
     }
 
-    public void setUnits(Integer units) {
+    public void setUnits(int units) {
         this.units = units;
     }
 
@@ -75,4 +74,7 @@ public class Product {
     public void setSubcategory(Subcategory subcategory) {
         this.subcategory = subcategory;
     }
+
+    
+
 }

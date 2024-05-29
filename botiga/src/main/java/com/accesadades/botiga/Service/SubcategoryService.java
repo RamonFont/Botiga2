@@ -1,14 +1,12 @@
 package com.accesadades.botiga.Service;
 
-import java.util.List;
-import java.util.Set;
 import com.accesadades.botiga.Model.Subcategory;
+import java.util.List;
 
 public interface SubcategoryService {
-    Set<Subcategory> findAllSubcategories();
-    Subcategory findSubcategoryByNom(String nom);
-    Subcategory findSubcategoryById(Long id);
-    void saveSubcategory(Subcategory subcategory);
-    void deleteSubcategoryById(Long id);
     List<Subcategory> getAllSubcategories();
+    Subcategory getSubcategoryById(Long id);
+    Subcategory saveSubcategory(Subcategory subcategory);
+    void deleteSubcategory(Long id);
+    Subcategory findSubcategoryByName(String name);
 }

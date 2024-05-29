@@ -4,7 +4,6 @@ import com.accesadades.botiga.Model.Product;
 import com.accesadades.botiga.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -33,5 +32,8 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-    
+    @Override
+    public Product findProductsByName(String name) {
+        return productRepository.findByName(name);
+    }
 }

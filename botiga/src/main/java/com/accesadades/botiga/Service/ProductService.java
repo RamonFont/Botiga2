@@ -1,7 +1,6 @@
 package com.accesadades.botiga.Service;
 
 import com.accesadades.botiga.Model.Product;
-
 import java.util.List;
 
 public interface ProductService {
@@ -9,4 +8,5 @@ public interface ProductService {
     Product getProductById(Long id);
     Product saveProduct(Product product);
     void deleteProduct(Long id);
+    Product findProductsByName(String name);
 }

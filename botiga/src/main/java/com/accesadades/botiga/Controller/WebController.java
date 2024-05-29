@@ -45,34 +45,34 @@ public class WebController {
     }
 
     @PostMapping("/productos/desar")
-public String saveProduct(@RequestParam("nom") String nom,
-                          @RequestParam("descripcio") String descripcio,
-                          @RequestParam("unitats") int unitats,
-                          @RequestParam("preu") float preu,
-                          @RequestParam("fabricant") String fabricant,
-                          @RequestParam("subcategoria") Long subcategoryId,
-                          @RequestParam("categoria") Long categoryId,
-                          Model model) {
-    Subcategory subcategory = subcategoryService.findSubcategoryById(subcategoryId);
-    Category category = categoryService.findCategoryById(categoryId);
+    public String saveProduct(@RequestParam("nom") String nom,
+                              @RequestParam("descripcio") String descripcio,
+                              @RequestParam("unitats") int unitats,
+                              @RequestParam("preu") float preu,
+                              @RequestParam("fabricant") String fabricant,
+                              @RequestParam("subcategoria") Long subcategoryId,
+                              @RequestParam("categoria") Long categoryId,
+                              Model model) {
+        Subcategory subcategory = subcategoryService.getSubcategoryById(subcategoryId);
+        Category category = categoryService.getCategoryById(categoryId);
 
-    if (subcategory == null || category == null) {
-        model.addAttribute("error", "Categoria o subcategoria no vàlida.");
-        return "crearProducto";
+        if (subcategory == null || category == null) {
+            model.addAttribute("error", "Categoria o subcategoria no vàlida.");
+            return "crearProducto";
+        }
+
+        Product product = new Product();
+        product.setName(nom);
+        product.setDescription(descripcio);
+        product.setUnits(unitats);
+        product.setPrice(preu);
+        product.setCompany(fabricant);
+        product.setSubcategory(subcategory);
+
+        productService.saveProduct(product);
+
+        return "redirect:/catalog";
     }
-
-    Product product = new Product();
-    product.setName(nom);
-    product.setDescription(descripcio);
-    product.setUnits(unitats);
-    product.setCompany(fabricant);
-    product.setSubcategory(subcategory);
-
-    productService.saveProduct(product);
-
-    return "redirect:/catalogo";
-}
-
 
     @GetMapping("/catalog")
     public String mostrarCatalogo(Model model) {
@@ -81,14 +81,15 @@ public String saveProduct(@RequestParam("nom") String nom,
         return "catalog"; 
     }
 
-    @GetMapping("/productos/crear")
-    public String showCreateProductForm(Model model) {
-    Set<Category> categories = categoryService.findAllCategories();
-    Set<Subcategory> subcategories = subcategoryService.findAllSubcategories();
-    model.addAttribute("product", new Product());
-    model.addAttribute("categories", categories);
-    model.addAttribute("subcategories", subcategories);
-    return "crearProducto";
-}
+    @GetMapping("/search")
+    public String showSearchForm() {
+        return "search"; // Referencia a search.html en el directorio templates
+    }
 
+    @PostMapping("/prodname")
+    public String searchProductByName(@RequestParam("name") String name, Model model) {
+        Product product = productService.findProductsByName(name);
+        model.addAttribute("product", product);
+        return "buscar"; // Referencia a buscar.html en el directorio templates
+    }
 }

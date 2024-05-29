@@ -8,21 +8,19 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long category_id;
 
     private String name;
 
     @OneToMany(mappedBy = "category")
     private Set<Subcategory> subcategories;
 
-    // Getters and Setters
-
-    public Long getCategoryId() {
-        return categoryId;
+    public Long getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
     }
 
     public String getName() {
@@ -40,4 +38,7 @@ public class Category {
     public void setSubcategories(Set<Subcategory> subcategories) {
         this.subcategories = subcategories;
     }
+
+    
+
 }
